@@ -1,0 +1,16 @@
+---
+- name: Install python-software-properties
+  sudo: yes
+  action: "{{ ansible_pkg_mgr }} pkg=python-software-properties state=installed update-cache=yes"
+
+- name: Install python-pycurl
+  sudo: yes
+  action: "{{ ansible_pkg_mgr }} pkg=python-pycurl state=installed update-cache=yes"
+
+- name: Add jenkins apt-key
+  sudo: yes
+  action: apt_key url={{ jenkins.deb.key }} state=present
+
+- name: Add Jenkins repo
+  sudo: yes
+  action: apt_repository repo='{{ jenkins.deb.repo }}' state=present
