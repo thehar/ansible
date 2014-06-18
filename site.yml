@@ -1,0 +1,7 @@
+---
+- name:
+  hosts: jenkins
+  user: vagrant
+  sudo: yes
+  roles:
+    - jenkins
